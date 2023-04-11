@@ -1,0 +1,58 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/password/_macro.njk" import onsPassword %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% extends "layout/_template.njk" %}
+{% from "components/access-code/_macro.njk" import onsUACInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/lists/_macro.njk" import onsList %}
+ {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/.html"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'ONS business surveys'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+    <h1>Check your email</h1>
+        <div class="ons-u-mt-xl ons-u-mb-m">
+         <p >Follow the link in the email we have sent to <a href="">jeremiah.poku@mail.com</a> to finish setting up your account.</p></div>
+
+      {% call onsDetails({
+            id: "details",
+                "classes": "ons-u-mt-xl",
+            title: "I have not received the email",
+            button: {
+                "contextSuffix": "content"
+            }
+        })
+    %}
+     {% set content %}
+        <p>If you do not receive this email in 15 minutes, check:
+            <ul>
+            <li>your spam folder</li>
+            <li>that your email address was entered correctly</li>
+            <li>that your account was registered with this email</li>
+            <li>that <a href='#0'>ons.surveys@notifications.service.gov.uk</a> is added to your list of approved senders</li></ul>
+            If you need more help, contact us on +44 300 1234 931 or email us at <a href='#0'>surveys@ons.gov.uk</a>. </p>  
+    {% endset %}
+        {{ content | safe }}
+    {% endcall %}
+{% endblock %}

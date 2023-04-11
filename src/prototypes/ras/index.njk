@@ -1,0 +1,18 @@
+---
+group: RAS
+title: sign-in
+layout: ras/views/_master
+---
+{% from "components/button/_macro.njk" import onsButton %}
+
+{% block main %}
+    <h1>'Create account' prototype</h1>
+    <p>This prototype contains the 'create account' journey.</p>
+    {{
+        onsButton({
+            "text": "Start",
+            "classes": "ons-u-mt-l",
+            "url": pageInfo.rootPath + "/sign_in.html"
+        })
+    }}
+{% endblock %}

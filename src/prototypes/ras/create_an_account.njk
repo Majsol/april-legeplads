@@ -1,0 +1,89 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/password/_macro.njk" import onsPassword %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% extends "layout/_template.njk" %}
+{% from "components/access-code/_macro.njk" import onsUACInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/panel/_macro.njk" import onsPanel %}
+{% from "components/details/_macro.njk" import onsDetails %}
+{% from "components/lists/_macro.njk" import onsList %}
+ {% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/.html"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'ONS business surveys'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+{{
+    onsBreadcrumbs({
+        "ariaLabel": 'Back',
+        "itemsList": [
+            {
+                "url": 'sign_in.html',
+                "id": "back",
+                "text": 'Back',
+                "attributes": {
+                    "data-attribute": "Example attribute"
+                }
+            }
+        ]
+    })
+}}
+    <h1>Create an account</h1>
+     <p >You need the enrolment code that was sent to you to create your account.</p>
+    {{ onsUACInput({
+        "id": "uac",
+        "name": "uac",
+        "postTextboxLinkUrl": "#0",
+        "label": {
+            "text": "Enter your enrolment code",
+            "description": "The enrolment code is 12 mixed letters and numbers"
+        },
+        "securityMessage": "Your personal information is protected by law"
+    }) }}
+
+<div class="ons-btn-group">
+    {{
+        onsButton({
+            "text": "Continue",
+            "iconType": false,
+            "classes": "ons-u-mt-m",
+            "url": pageInfo.rootPath + "/details_correct.html"
+        })
+    }}  
+ 
+</div>
+    {% set content %}
+        <p>If you have lost, did not receive or if the enrolment code does not work, you can request a new access code. </p>
+    <p>Contact us on +44 300 1234 931 or email us at <a href='#0'>surveys@ons.gov.uk</a>.</p>     
+    {% endset %}
+
+      {% call onsDetails({
+            id: "details",
+                "classes": "ons-u-mt-xl",
+            title: "Need help with the enrolment code?",
+            button: {
+                "contextSuffix": "content"
+            }
+        })
+    %}
+        {{ content | safe }}
+    {% endcall %}
+{% endblock %}

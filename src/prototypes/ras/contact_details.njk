@@ -1,0 +1,93 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% extends "layout/_template.njk" %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/.html"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'ONS business surveys'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+    {{onsBreadcrumbs({
+        "ariaLabel": 'Back',
+        "itemsList": [
+            {
+                "url": 'details_correct.html',
+                "id": "back",
+                "text": 'Back',
+                "attributes": {
+                    "data-attribute": "Example attribute"
+                }
+            }
+        ] 
+        })  
+        }}
+    <h1>Enter your contact details</h1>
+    {{
+    onsInput({
+        "id": "text",
+        "label": {
+            "text": "First name"
+        }
+    })
+}}
+  {{
+    onsInput({
+        "id": "text",
+        "label": {
+            "text": "Last name"
+        }
+    })
+}}
+  {{
+    onsInput({
+        "id": "email",
+        "label": {
+            "text": "Email address"
+        }
+    })
+}}
+  {{
+    onsInput({
+        "id": "email",
+        "label": {
+            "text": "Confirm email address"
+        }
+    })
+}}
+{{
+    onsInput({
+        "id": "number",
+        "label": {
+            "text": "Phone number",
+            "description": "We will use this number if we need to contact you about your answers. 
+For international numbers include the country code."
+        }
+    })
+}}
+<br>
+    {{onsButton({
+            "text": "Continue",
+            "iconType": false,
+            "classes": "ons-u-mt-m",
+            "url": pageInfo.rootPath + "/create_password.html"
+        })
+        }}  
+
+{% endblock %}

@@ -1,0 +1,52 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% from "components/input/_macro.njk" import onsInput %}
+{% from "components/button/_macro.njk" import onsButton %}
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/create_an_account.html"
+    }
+} %}
+
+{% block main %}
+    <h1>Sign in</h1>
+    {{
+        onsInput({
+            "id": "email-address",
+            "name": "email-address",
+            "label": {
+                "text": "Email address"
+            }
+        })
+    }}
+   {% from "components/password/_macro.njk" import onsPassword %}
+
+    {{
+        onsPassword({
+            "id": "password",
+            "label": {
+                "text": "Password"
+            },
+            "showPasswordText": "Show password"
+        })
+    }}
+
+    <br>
+    <a href="change_details">Forgot password?</a>
+    <br>
+
+    {{
+        onsButton({
+            "text": "Sign in",
+            "classes": "ons-u-mt-l"
+        })
+    }}
+    <br><br><br>
+    <h2>New to this service?</h2>
+    <a rel= "styles" href="create_an_account.html">Create an account</a>
+{% endblock %}

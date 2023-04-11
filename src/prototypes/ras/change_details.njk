@@ -1,0 +1,88 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% extends "layout/_template.njk" %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/metadata/_macro.njk" import onsMetadata %}
+    {% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/.html"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'ONS business surveys'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+    {{onsBreadcrumbs({
+        "ariaLabel": 'Back',
+        "itemsList": [
+            {
+                "url": 'create_an_account.html',
+                "id": "back",
+                "text": 'Back',
+                "attributes": {
+                    "data-attribute": "Example attribute"
+                }
+            }
+        ] 
+        })  
+        }}
+    <h1>Change the details</h1>
+    <p>If your business details are incorrect or the survey you were expecting is not listed, contact us on +44 300 1234 931 or email us at <a href=''>surveys@ons.gov.uk</a></p>
+    <br>
+    {{
+    onsMetadata({
+        "classes": "ons-u-mb-no",
+        "metadataLabel": "Information about this business and its survey requirements",
+        "termCol": "2",
+        "descriptionCol": "10",
+        "itemsList": [
+            { 
+                "term": "Enrolment code:",
+                "descriptions": [
+                    {
+                        "description": "jhyq  g5p6  dyf4"
+                    }
+                ]
+            },
+            {
+                "term": "Organisation:",
+                "descriptions": [
+                    {
+                        "description": "Tesco stores incl Tesco distribution ltd"
+                    }
+                ]
+            },
+            {
+                "term": "Trading as:",
+                "descriptions": [
+                    {
+                        "description": "Activity in England, Scotland, Wales and Northern Ireland"
+                    }
+                ]
+            },
+            {
+                "term": "Surveys to complete:",
+                "descriptions": [
+                    {
+                        "description": "UK Innovation survey"
+                    }
+                ]
+            }
+        ] 
+        }) 
+        }}
+
+{% endblock %}

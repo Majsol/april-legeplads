@@ -1,0 +1,136 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% extends "layout/_template.njk" %}
+{% from "components/button/_macro.njk" import onsButton %}
+{% from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs %}
+{% from "components/metadata/_macro.njk" import onsMetadata %}
+    {% from "components/radios/_macro.njk" import onsRadios %}
+{% from "components/question/_macro.njk" import onsQuestion %}
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "name": "CheckDetailsAreCorrect",
+        "action": "#",
+        "onsubmit": "return YesOrNo()"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'ONS business surveys'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+    {{onsBreadcrumbs({
+        "ariaLabel": 'Back',
+        "itemsList": [
+            {
+                "url": 'create_an_account.html',
+                "id": "back",
+                "text": 'Back',
+                "attributes": {
+                    "data-attribute": "Example attribute"
+                }
+            }
+        ] 
+        })  
+        }}
+    <h1>Are these details correct?</h1>
+    {{
+    onsMetadata({
+        "classes": "ons-u-mb-no",
+        "metadataLabel": "Information about this business and its survey requirements",
+        "termCol": "2",
+        "descriptionCol": "10",
+        "itemsList": [
+            {
+                "term": "Enrolment code:",
+                "descriptions": [
+                    {
+                        "description": "jhyq  g5p6  dyf4"
+                    }
+                ]
+            },
+            {
+                "term": "Organisation:",
+                "descriptions": [
+                    {
+                        "description": "Tesco stores incl Tesco distribution ltd"
+                    }
+                ]
+            },
+            {
+                "term": "Trading as:",
+                "descriptions": [
+                    {
+                        "description": "Activity in England, Scotland, Wales and Northern Ireland"
+                    }
+                ]
+            },
+            {
+                "term": "Surveys to complete:",
+                "descriptions": [
+                    {
+                        "description": "UK Innovation survey"
+                    }
+                ]
+            }
+        ] 
+        }) 
+        }}
+
+{% call onsQuestion({
+    "classes": "ons-u-mt-no",
+    "legendIsQuestionTitle": true
+}) %}
+    {{
+        onsRadios({
+            "name": "correctornot",
+            "dontWrap": true,
+            "radios": [
+                {
+                    "id": "yes",
+                    "label": {
+                        "text": "Yes, these details are correct"
+                    },
+                    "value": "yes"
+                },
+                {
+                    "id": "no",
+                    "label": {
+                        "text": "No, I want to change the details"
+                    },
+                    "value": "no"
+                }
+            ]
+        })
+    }}
+{% endcall %}
+
+    {{onsButton({
+            "text": "Continue",
+            "iconType": false,
+            "classes": "ons-u-mt-m"
+        })
+        }}  
+{% endblock %}
+
+{% block bodyEnd %}
+<script>
+        function YesOrNo(){
+            let x = document.forms["CheckDetailsAreCorrect"]["correctornot"].value;
+            if(x == "yes"){
+                document.forms["CheckDetailsAreCorrect"].action = "contact_details.html";
+            }
+            if (x == "no") {
+                document.forms["CheckDetailsAreCorrect"].action = "change_details.html";
+            }
+        }
+    </script>
+{% endblock %}
