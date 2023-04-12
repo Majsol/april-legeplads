@@ -5,11 +5,12 @@ layout: ras/views/_master
 ---
 {% from "components/input/_macro.njk" import onsInput %}
 {% from "components/button/_macro.njk" import onsButton %}
+  {% from "components/password/_macro.njk" import onsPassword %}
 
 {% set form =  {
     "method": "GET",
     "attributes": {
-        "action":  pageInfo.rootPath + "/create_an_account.html"
+        "action":  pageInfo.rootPath + "index.html"
     }
 } %}
 
@@ -24,7 +25,6 @@ layout: ras/views/_master
             }
         })
     }}
-   {% from "components/password/_macro.njk" import onsPassword %}
 
     {{
         onsPassword({
@@ -37,13 +37,14 @@ layout: ras/views/_master
     }}
 
     <br>
-    <a href="change_details">Forgot password?</a>
+    <a href="">Forgot password?</a>
     <br>
 
     {{
         onsButton({
             "text": "Sign in",
             "classes": "ons-u-mt-l"
+        
         })
     }}
 {% endblock %}
