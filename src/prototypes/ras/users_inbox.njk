@@ -1,0 +1,54 @@
+---
+group: RAS
+title: Create an account
+layout: ras/views/_master
+---
+{% extends "layout/_template.njk" %}
+
+{% set form =  {
+    "method": "GET",
+    "attributes": {
+        "action":  pageInfo.rootPath + "/private_email.html"
+    }
+} %}
+
+{% set pageConfig = {
+    "header": {
+        "title": 'Users inbox'
+    },
+    "footer": {}
+} %}
+
+{% block main %}
+        <div class="ons-u-mt-xl ons-u-mb-m"> 
+            <div class="row">
+  <div class="column">From:</div>
+  <div class="column">ONS Surveys</div>
+</div>
+            <div class="row">
+  <div class="column">Reply to:</div>
+  <div class="column">surveys@ons.gov.uk</div>
+</div>
+            <div class="row">
+  <div class="column">To:</div>
+  <div class="column">jeremiah.poku@mail.com</div>
+</div>
+            <div class="row">
+  <div class="column">Subject:</div>
+  <div class="column">Activate your ONS Surveys account</div>
+</div>
+         <hr>
+         <br>
+         <p>Thank you for registering for an ONS Surveys account. 
+         Please confirm your email address to activate your account by using this link:</p> 
+         <a rel="syles" href="account_activated.html">https://surveys.onsdigital.uk:443/register/activate: account/ImRpbmFzb2VIQGdtYWlsLmNvbSIY9uXmw.r9dTOJDRt7jYBu gQ2FLov10tBVU</a> 
+         <br><br>
+         <p>This link is usable for 3 days from the time we sent this email.</p>
+         <p>You can contact us in the following ways:</p>
+         <p>Email: surveys@ons.gov.uk</p>
+         <p>Phone: 0300 1234 931</p>
+         <br>
+         <p>Thank you</p>
+         <p>ONS Business Surveys Team</p></div>
+         <hr>
+{% endblock %}

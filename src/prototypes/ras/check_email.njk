@@ -19,7 +19,7 @@ layout: ras/views/_master
 {% set form =  {
     "method": "GET",
     "attributes": {
-        "action":  pageInfo.rootPath + "/.html"
+        "action":  pageInfo.rootPath + "/users_inbox.html"
     }
 } %}
 
@@ -33,8 +33,7 @@ layout: ras/views/_master
 {% block main %}
     <h1>Check your email</h1>
         <div class="ons-u-mt-xl ons-u-mb-m">
-         <p >Follow the link in the email we have sent to <a href="">jeremiah.poku@mail.com</a> to finish setting up your account.</p></div>
-
+         <p >Follow the link in the email we have sent to <a rel="syles" href="users_inbox.html">jeremiah.poku@mail.com</a> to finish setting up your account.</p></div>
       {% call onsDetails({
             id: "details",
                 "classes": "ons-u-mt-xl",
@@ -50,7 +49,7 @@ layout: ras/views/_master
             <li>your spam folder</li>
             <li>that your email address was entered correctly</li>
             <li>that your account was registered with this email</li>
-            <li>that <a href='#0'>ons.surveys@notifications.service.gov.uk</a> is added to your list of approved senders</li></ul>
+            <li>that <a href="0">ons.surveys@notifications.service.gov.uk</a> is added to your list of approved senders</li></ul>
             If you need more help, contact us on +44 300 1234 931 or email us at <a href='#0'>surveys@ons.gov.uk</a>. </p>  
     {% endset %}
         {{ content | safe }}
